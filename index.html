@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript Microsoft Graph SPA</title>
+  <link rel="icon" href="data:;base64,="> <!-- Suppress favicon error -->
+  <link rel="stylesheet"
+    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body class="ms-Fabric" dir="ltr">
+  <a id="signin" onclick="displayUI(); return false;" href="#">
+    <img src="./images/ms-symbollockup_signin_light.png" alt="Sign in with Microsoft" />
+  </a>
+  <div id="content" style="display: none;">
+    <div class="card">
+      <mgt-person></mgt-person>
+      <div class="about">
+        <h1><span id="userName"></span></h1>
+        <p id="myJob"></p>
+      </div>
+    </div>
+
+    <div class="ms-Grid">
+      <div class="ms-Grid-row">
+        <!-- Column 1-->
+        <div class="ms-Grid-col ms-sm12 ms-md6 ms-lg4">
+          <div id="buddy">
+            <h2>Your buddy</h2>
+            <div class="loading">Loading your buddy info...</div>
+            <div class="noContent">
+              <p>You've got no buddy yet!</p>
+              <button class="button">Quick, find me a buddy!</button>
+            </div>
+          </div>
+
+          <!-- Colleagues -->
+          <div id="colleagues">
+            <h2>Tune Squad fans</h2>
+            <div class="loading">Loading Tune Squad fans...</div>
+            <ul></ul>
+            <div class="noContent">You've got no Tune Squad fans 😳</div>
+          </div>
+
+        </div>
+
+        <div class="ms-Grid-col ms-sm12 ms-md6 ms-lg4">
+          <!-- Events -->
+          <div id="games">
+            <h2>Upcoming NBA games</h2>
+            <div class="loading">Loading upcoming games...</div>
+            <div class="noContent">It's quiet here 🔕</div>
+            <mgt-agenda group-by-day>
+              <template data-type="event">
+                <div class="details ms-depth-8">
+                  <div>
+                    <div class="subject ms-fontWeight-bold ms-color-sharedCyanBlue20">{{ event.subject }}</div>
+                    <div class="time">{{ timeRangeFromEvent(event) }}</div>
+                  </div>
+                  <div class="location" data-if="event.location.displayName">
+                    📍<span><b>{{ event.location.displayName }}</b></span>
+                  </div>
+                  <div class="attendees" data-if="event.attendees.length">
+                    <span class="attendee" data-for="attendee in event.attendees">
+                      <div data-if="attendee.personImage">
+                        <img alt="{{attendee.emailAddress.name}}" src="{{attendee.personImage}}" />
+                      </div>
+                      <div data-else>
+                        <mgt-person person-details="{{attendee}}"></mgt-person>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="online-meeting" data-if="event.bodyPreview.includes('Join Microsoft Teams Meeting')">
+                    <img class="online-meeting-icon" src="https://img.icons8.com/color/48/000000/microsoft-teams.png" />
+                    <a class="online-meeting-link" href="{{ event.onlineMeetingUrl }}">Join Teams Meeting</a>
+                  </div>
+                </div>
+              </template>
+            </mgt-agenda>
+          </div>
+        </div>
+
+        <div class="ms-Grid-col ms-sm12 ms-md6 ms-lg4">
+          <div id="newWatchParty">
+            <button class="button">ORGANIZE A WATCH PARTY 📺</button>
+            <div class="ms-Grid">
+              <h2>Let's create a watch party!🎉</h2>
+              <div class="ms-Grid-row">
+                <div class="ms-Grid-col ms-sm6 ms-md10 ms-lg10">
+                  <label>Subject</label>
+                  <input id="ev-subject" class="input" type="text"></input>
+                  <label>Attendees</label>
+                  <div class="attendeesDiv">
+                    <mgt-people-picker class="custom-class"></mgt-people-picker>
+                  </div>
+                  <div class="ms-Grid">
+                    <div class="ms-Grid-row">
+                      <div class="ms-Grid-col ms-sm12 ms-md6 ms-lg6">
+                        <label>Start</label>
+                      </div>
+                      <div class="ms-Grid-col ms-sm12 ms-md6 ms-lg6">
+                        <label>End</label>
+                      </div>
+                    </div>
+                    <div class="ms-Grid-row">
+                      <div class="ms-Grid-col ms-sm12 ms-md6 ms-lg6">
+                        <input id="ev-start" class="input" type="datetime-local"></input>
+                      </div>
+                      <div class="ms-Grid-col ms-sm12 ms-md6 ms-lg6">
+                        <input id="ev-end" class="input" type="datetime-local"></input>
+                      </div>
+                    </div>
+                  </div>
+                  <label>Body</label>
+                  <textarea id="ev-body" class="input" rows="3"></textarea>
+                </div>
+              </div>
+              <div class="ms-Grid-row">
+                <div class="ms-Grid-col ms-sm12 ms-md4 ms-lg4">
+                  <button class="createButton">Create</button>
+                </div>
+                <div class="ms-Grid-col ms-sm12 ms-md8 ms-lg4">
+                  <button class="cancelButton">Cancel</button>
+                </div>
+              </div>
+            </div>
+
+            <div id="events">
+
+              <div class="loading">Loading upcoming watch parties...</div>
+              <div class="noContent">It's quiet here 🔕</div>
+
+
+              <h2>Upcoming watch parties</h2>
+              <mgt-agenda group-by-day>
+                <template data-type="event">
+                  <div class="details ms-depth-8">
+                    <div>
+                      <div class="subject ms-fontWeight-bold ms-color-sharedCyanBlue20">{{ event.subject }}</div>
+                      <div class="time">{{ timeRangeFromEvent(event) }}</div>
+                    </div>
+                    <div class="location" data-if="event.location.displayName">
+                      📍<span><b>{{ event.location.displayName }}</b></span>
+                    </div>
+                    <div class="attendees" data-if="event.attendees.length">
+                      <span class="attendee" data-for="attendee in event.attendees">
+                        <div data-if="attendee.personImage">
+                          <img alt="{{attendee.emailAddress.name}}" src="{{attendee.personImage}}" />
+                        </div>
+                        <div data-else>
+                          <mgt-person person-details="{{attendee}}"></mgt-person>
+                        </div>
+                      </span>
+                    </div>
+                    <div class="online-meeting" data-if="event.bodyPreview.includes('Join Microsoft Teams Meeting')">
+                      <img class="online-meeting-icon"
+                        src="https://img.icons8.com/color/48/000000/microsoft-teams.png" />
+                      <a class="online-meeting-link" href="{{ event.onlineMeetingUrl }}">Join Teams Meeting</a>
+                    </div>
+                  </div>
+                </template>
+              </mgt-agenda>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://alcdn.msauth.net/browser/2.1.0/js/msal-browser.min.js"
+      integrity="sha384-EmYPwkfj+VVmL1brMS1h6jUztl4QMS8Qq8xlZNgIT/luzg7MAzDVrRa2JxbNmk/e"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/microsoft-graph-client/lib/graph-js-sdk.js"></script>
+    <script src="https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js"></script>
+    <script src=".env.js"></script>
+    <script type=module src="index.js"></script>
+</body>
+
+</html>

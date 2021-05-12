@@ -1,0 +1,206 @@
+ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.ms-color-sharedCyanBlue20 {
+  color: #004e8c;
+}
+
+.mt8 {
+  margin-top: 8px;
+}
+
+.noContent {
+  display: none;
+}
+
+#colleagues {
+  margin-top: 2.5em;
+}
+
+#colleagues li {
+  cursor: pointer;
+  padding: 14px 14px 14px 0;
+}
+
+#colleagues li.selected {
+  border: 1px solid #ccc;
+  background: #eee;
+}
+
+#emails li {
+  margin: 0 10px 14px 0;
+  padding: 14px;
+}
+
+.date {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.time {
+  display: inline;
+  font-size: 12px;
+}
+
+.location {
+  font-size: 12px;
+}
+
+.location a {
+  text-decoration: none;
+}
+
+.details {
+  margin: 5px 10px 20px 10px;
+  font-size: 18px;
+  min-width: 180px;
+  padding: 10px 5px;
+}
+
+.online-meeting {
+  font-size: 10px;
+  margin-top: 8px;
+}
+
+.online-meeting-icon {
+  max-width: 16px;
+  vertical-align: middle;
+}
+
+.online-meeting-link {
+  text-decoration: none;
+  color: #3063b2;
+}
+
+.attendees {
+  margin-top: 8px;
+}
+
+.attendee {
+  display: inline-block;
+}
+
+.subject {
+  font-size: 14px;
+}
+
+.card {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  padding: 0;
+  background-color: #dc482e;
+  color: #10296d;
+  margin: -8px -8px 0 -8px;
+  border-bottom: 5px solid #10296d;
+}
+
+.about {
+  margin-top: 15px;
+}
+
+.card mgt-person {
+  position: relative;
+  margin-top: 15px;
+  z-index: 100;
+  --avatar-size: 100px;
+  --avatar-border: 5px solid rgba(237, 237, 237, 0.6);
+  --avatar-border-radius: 50%;
+}
+
+.button, .createButton, .cancelButton {
+  background-color: #ac6faa;
+  border: none;
+  color: #10296d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: 1em 0;
+  cursor: pointer;
+  box-shadow: 5px 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+
+.button:disabled {
+  background-color: #aaa;
+  color: #555;
+}
+
+.attendee {
+  padding-right:2px;
+}
+
+.attendee img {
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+#profile table {
+  border-collapse: collapse;
+}
+
+#profile td {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 3pt 6pt;
+}
+
+h2 {
+  color: #10296D;
+}
+
+label{
+  color: #10296D;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.input {
+ width: 100%;
+ height: max-content;
+ margin-bottom: 10px;
+ /* border-bottom: 3px solid #10296D;
+ border-left: transparent;
+ border-right: transparent;
+ border-top: transparent; */
+ outline: none;
+ /* background-color: transparent;  */
+ border: 3px solid #10296D;
+ padding: 10px 2px;
+ 
+}
+
+.input:focus{
+  /* border-bottom: 3px solid #ac6faa; */
+  border: 3px solid #ac6faa;
+}
+
+.attendeesDiv {
+ width: 100%;
+ height: max-content;
+ margin-bottom: 10px;
+ background-color: transparent;
+ /* padding: 12px 2px; */
+}
+
+
+.attendeesDiv mgt-people-picker.custom-class {
+  
+  --input-border: 3px solid #10296D;
+  
+  --input-border-color--focus:#ac6faa;
+}
+
