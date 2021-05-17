@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "npx http-server -c-1 -a localhost -o"
+    "start": "npx http-server -c-1 -a localhost -o",
+    "start:ngrok": "ngrok http -subdomain=tunesquadfans 8080"
   },
   "repository": {
     "type": "git",

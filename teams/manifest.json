@@ -1,0 +1,51 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.9",
+  "version": "1.0.0",
+  "id": "a4bb05d4-b5b8-4e63-9e51-f3f161fd611b",
+  "packageName": "com.tunesquad.watchparty",
+  "developer": {
+    "name": "Tune Squad",
+    "websiteUrl": "https://tunesquadfans.ngrok.io",
+    "privacyUrl": "https://tunesquadfans.ngrok.io/privacy",
+    "termsOfUseUrl": "https://tunesquadfans.ngrok.io/termsofuse"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Watch Party",
+    "full": "Tune Squad Watch Party"
+  },
+  "description": {
+    "short": "Watch games with other tune squad fans",
+    "full": "Watch games with other tune squad fans"
+  },
+  "accentColor": "#DC482E",
+  "staticTabs": [
+    {
+      "entityId": "tunesquadwatchparty",
+      "name": "Watch Party",
+      "contentUrl": "https://tunesquadfans.ngrok.io",
+      "websiteUrl": "https://tunesquadfans.ngrok.io",
+      "scopes": [
+        "personal"
+      ]
+    },
+    {
+      "entityId": "about",
+      "scopes": [
+        "personal"
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "tunesquadfans.ngrok.io",
+    "login.microsoftonline.com"
+  ]
+}

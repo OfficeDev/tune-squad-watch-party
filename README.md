@@ -25,6 +25,16 @@
 
 1. Run `npm start` to start the app
 
+## Run the app in Microsoft Teams
+
+> **Important:** to run this app in Microsoft Teams, you will need an ngrok license. If you don't have an ngrok license, you will need to adjust the **start:ngrok** npm script so that it doesn't use a custom subdomain (remove the **-subdomain** argument). Each time you start ngrok, you will need to update the Microsoft Teams app manifest in the **teams/manifest.json** file with the domain name used by ngrok and upload your app to Microsoft Teams.
+
+1. Create a Teams app package by zipping the contents of the **teams** folder (just its contents, not the whole folder)
+1. [Ensure that you can upload custom apps](https://docs.microsoft.com/microsoftteams/platform/build-your-first-app/build-and-run?tabs=do-not-have-a-tenant?WT.mc_id=m365-26570-cxa#set-up-your-teams-development-tenant)
+1. [Upload the app package](https://docs.microsoft.com/microsoftteams/platform/concepts/deploy-and-publish/apps-upload?WT.mc_id=m365-26570-cxa) to Microsoft Teams
+1. In the command line, start the web server by executing: `npm start`
+1. In another command line, start ngrok, by executing: `npm run start:ngrok`
+
 ## Interesting concepts
 
 This application illustrates the following concepts:
@@ -47,6 +57,6 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 ## Trademarks
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow  [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow  [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general).
 
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship. Any use of third-party trademarks or logos are subject to those third-party's policies.
