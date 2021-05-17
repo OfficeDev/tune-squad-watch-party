@@ -15,7 +15,7 @@ export async function getMyColleagues() {
   const currentUserId = account.homeAccountId.substr(0, account.homeAccountId.indexOf('.'));
   colleagues.value = colleagues.value.filter(c => c.id !== currentUserId);
 
-  colleagues.value.forEach((colleague, i) => {
+  colleagues.value.forEach(colleague => {
     colleague.jobTitleAndDepartment = `${colleague.jobTitle || ''} (${colleague.department || ''})`;
     colleague.localTime = [colleague.city, colleague.state, colleague.country].join(', ');
   });
@@ -31,14 +31,4 @@ export async function getMyColleagues() {
   });
 
   return ({ myColleagues: colleagues });
-}
-
-function toShortTimeString(date) {
-  const timeString = date.toLocaleTimeString();
-  const match = timeString.match(/(\d+\:\d+)\:\d+(.*)/);
-  if (!match) {
-    return timeString;
-  }
-
-  return `${match[1]}${match[2]}`;
 }

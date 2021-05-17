@@ -1,6 +1,6 @@
 import { getBuddyInfo, saveBuddyInfo } from '../graph/buddy.js';
 import { getMyColleagues } from '../graph/colleagues.js';
-import { getUserProfile } from '../graph/user.js';
+import { getUserProfile, getUserPhoto } from '../graph/user.js';
 
 export async function loadBuddy() {
   const settings = await getBuddyInfo();
@@ -12,6 +12,8 @@ export async function loadBuddy() {
     return;
   }
   else {
+    const buddyPhoto = await getUserPhoto(settings.buddy.mail);
+    settings.buddy.personImage = URL.createObjectURL(buddyPhoto);
     showBuddy(settings.buddy);
   }
 }
@@ -32,6 +34,8 @@ function showBuddy(buddy, buddySection, loading, button) {
 
   const mgtPerson = document.createElement('mgt-person');
   mgtPerson.personDetails = buddy;
+  mgtPerson.line2Property = '';
+  mgtPerson.line3Property = '';
   mgtPerson.view = mgt.PersonViewType.threelines;
   buddySection.appendChild(mgtPerson);
 }
