@@ -15,15 +15,15 @@ export async function createNewEvent() {
     subject: subject,
     start: {
       dateTime: start,
-      timeZone: 'UTC'
+      timeZone: 'Eastern Standard Time'
     },
     end: {
       dateTime: end,
-      timeZone: 'UTC'
+      timeZone: 'Eastern Standard Time'
     },
     isOnlineMeeting: true,
     onlineMeetingProvider: "teamsForBusiness",
-    categories: ["Red category"]
+    categories: ["Red category"]    
   };
 
   if (attendees) {
