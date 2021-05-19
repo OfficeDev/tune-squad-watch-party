@@ -1,5 +1,5 @@
 import { createNewEvent } from '../graph/newWatchParty.js';
-import { loadMeetings } from './events.js';
+import { loadWatchParties } from './watchParties.js';
 
 export function loadWatchPartyForm() {
   const newWatchParty = document.getElementById('newWatchParty');
@@ -17,7 +17,7 @@ export function getWatchPartyForm() {
   newWatchParty.querySelector('.button').style = 'display: none';
   newWatchParty.querySelector('.createButton').addEventListener('click', async function() {
     await createNewEvent();
-    await loadMeetings();
+    await loadWatchParties();
   });
   newWatchParty.querySelector('.cancelButton').addEventListener('click', refresh);
 }

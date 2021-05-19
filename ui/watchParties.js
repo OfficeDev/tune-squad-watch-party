@@ -1,15 +1,15 @@
-import { getMyUpcomingMeetings } from '../graph/events.js';
+import { getUpcomingWatchParties } from '../graph/watchParties.js';
 
-export async function loadMeetings() {
-    const eventsContainer = document.getElementById('events');
-    eventsContainer.querySelector('.loading').style = 'display: block';
-    eventsContainer.querySelector('.noContent').style = 'display: none';
-    eventsContainer.querySelector('mgt-agenda').events = [];
-    eventsContainer.querySelector('h2').innerHTML = 'Upcoming watch parties';
+export async function loadWatchParties() {
+    const watchPartiesContainer = document.getElementById('watchParties');
+    watchPartiesContainer.querySelector('.loading').style = 'display: block';
+    watchPartiesContainer.querySelector('.noContent').style = 'display: none';
+    watchPartiesContainer.querySelector('mgt-agenda').events = [];
+    watchPartiesContainer.querySelector('h2').innerHTML = 'Upcoming watch parties';
 
-    const events = await getMyUpcomingMeetings();
-    events.forEach(meeting => {
-        meeting.attendees = meeting.attendees.map(a => {
+    const watchParties = await getUpcomingWatchParties();
+    watchParties.forEach(watchParty => {
+        watchParty.attendees = watchParty.attendees.map(a => {
             return {
                 displayName: a.emailAddress.name,
                 mail: a.emailAddress.address,
@@ -18,11 +18,11 @@ export async function loadMeetings() {
         });
     });
 
-    eventsContainer.querySelector('mgt-agenda').events = events;
-    eventsContainer.querySelector('.loading').style = 'display: none';
+    watchPartiesContainer.querySelector('mgt-agenda').events = watchParties;
+    watchPartiesContainer.querySelector('.loading').style = 'display: none';
 
-    if (events.length === 0) {
-        eventsContainer.querySelector('.noContent').style = 'display: block';
+    if (watchParties.length === 0) {
+        watchPartiesContainer.querySelector('.noContent').style = 'display: block';
         return;
     }
 }

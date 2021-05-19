@@ -1,6 +1,6 @@
 import { loadProfile } from './ui/profile.js';
 import { loadFans } from './ui/fans.js';
-import { loadMeetings } from './ui/events.js';
+import { loadWatchParties } from './ui/watchParties.js';
 import { loadGames } from './ui/games.js';
 import { loadBuddy } from './ui/buddy.js';
 import { loadWatchPartyForm } from './ui/newWatchParty.js';
@@ -52,7 +52,7 @@ export async function loadData() {
     await Promise.all([
         loadBuddy(),
         loadGames(),
-        loadMeetings(),
+        loadWatchParties(),
         loadProfile(),
         loadWatchPartyForm()
     ]);
