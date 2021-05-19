@@ -12,7 +12,7 @@ export async function loadFans() {
 
     const mgtPerson = document.createElement('mgt-person');
     mgtPerson.personDetails = person;
-    mgtPerson.line2Property = '';
+    mgtPerson.line2Property = 'country';
     mgtPerson.line3Property = '';
     mgtPerson.view = mgt.PersonViewType.threelines;
 
