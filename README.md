@@ -42,7 +42,7 @@ This application illustrates the following concepts:
    Concept | Shown in file(s)
    --------|-----------------
    ES6 Modules | all .js files
-   Get colleagues from Microsoft Graph | graph/colleagues.js
+   Get fans from Microsoft Graph | graph/fans.js
    Get calendar events from Microsoft Graph across a date range | graph/events.js
    Set up Graph client with MSAL | auth.js, graph/graphClient.js
    Cache Graph results in browser storage | graph/graphClient.js, graph/CacheMiddleware.js

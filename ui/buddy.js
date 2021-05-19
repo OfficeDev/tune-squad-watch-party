@@ -1,5 +1,5 @@
 import { getBuddyInfo, saveBuddyInfo } from '../graph/buddy.js';
-import { getMyColleagues } from '../graph/colleagues.js';
+import { getFans } from '../graph/fans.js';
 import { getUserProfile, getUserPhoto } from '../graph/user.js';
 
 export async function loadBuddy() {
@@ -49,9 +49,9 @@ export async function findBuddy() {
   const button = buddySection.querySelector('button');
   button.disabled = true;
 
-  const fans = await getMyColleagues();
+  const { fans } = await getFans();
   const me = await getUserProfile();
-  const fansInMyLocation = fans.myColleagues.value.filter(c => c.country === me.country);
+  const fansInMyLocation = fans.value.filter(c => c.country === me.country);
 
   const numFans = fansInMyLocation.length;
   if (numFans === 0) {

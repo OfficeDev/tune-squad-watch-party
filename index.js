@@ -1,5 +1,5 @@
 import { loadProfile } from './ui/profile.js';
-import { loadColleagues } from './ui/colleagues.js';
+import { loadFans } from './ui/fans.js';
 import { loadMeetings } from './ui/events.js';
 import { loadGames } from './ui/games.js';
 import { loadBuddy } from './ui/buddy.js';
@@ -43,7 +43,7 @@ async function displayUI(auto) {
 
  
     await Promise.all([
-        loadColleagues(),
+        loadFans(),
         loadData()
     ]);
 }

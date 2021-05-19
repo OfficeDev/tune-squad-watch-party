@@ -16,15 +16,15 @@ ul {
   display: none;
 }
 
-#colleagues {
+#fans {
   margin-top: 2.5em;
 }
 
-#colleagues li {
+#fans li {
   padding: 14px 14px 14px 0;
 }
 
-#colleagues li.selected {
+#fans li.selected {
   border: 1px solid #ccc;
   background: #eee;
 }
